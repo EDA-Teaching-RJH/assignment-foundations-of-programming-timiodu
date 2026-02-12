@@ -63,10 +63,10 @@ def add_member(names, ranks, divs, ids):
 
 def remove_member(names, ranks, divs, ids):
 
-    try:
-        remove_id = int(input("Enter Crew ID to remove: "))
-    except ValueError:
-        print("Invalid ID. Must be a number.")
+       try:
+            remove_id = int(input("Enter Crew ID to remove: "))
+        except ValueError:
+            print("Invalid ID. Must be a number.")
         return
 
     if remove_id not in ids:
@@ -126,7 +126,7 @@ for r in valid_ranks:
 
 new_rank = input("\nEnter new rank: ").strip()
 
-if new_rank not in valid_ranks:
+ if new_rank not in valid_ranks:
         print("Invalid rank selection.")
     
         return
@@ -139,3 +139,16 @@ if confirm == "y":
 else:
         print("Update cancelled.") 
 
+def display_roster(names, ranks, divs, ids):
+ if len(names) == 0:
+        print("No crew members in database.")
+        return
+
+        print("\n===== STARFLEET CREW ROSTER =====")
+        print("{:<6} {:<15} {:<15} {:<15}".format("ID", "Name", "Rank", "Division"))
+        print("-" * 55)
+
+for i in range(len(names)):
+        print("{:<6} {:<15} {:<15} {:<15}".format(
+            ids[i], names[i], ranks[i], divs[i]
+        ))
