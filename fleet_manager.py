@@ -90,4 +90,5 @@ def remove_member(names, ranks, divs, ids):
         ids.pop(index)
         print("🚀 Crew member successfully removed from the fleet.")
     else:
-        print("Removal cancelled.")
+        print("Removal cancelled.")#
+
