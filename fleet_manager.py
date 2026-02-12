@@ -61,3 +61,33 @@ def add_member(names, ranks, divs, ids):
 
         print("Crew member successfully added.")#
 
+def remove_member(names, ranks, divs, ids):
+
+    try:
+        remove_id = int(input("Enter Crew ID to remove: "))
+    except ValueError:
+        print("Invalid ID. Must be a number.")
+        return
+
+    if remove_id not in ids:
+        print("No crew member found with that ID.")
+        return
+
+    index = ids.index(remove_id)
+
+    print("\n⚠ Crew Member Found:")
+    print(f"Name: {names[index]}")
+    print(f"Rank: {ranks[index]}")
+    print(f"Division: {divs[index]}")
+    print(f"ID: {ids[index]}")
+
+    confirm = input("\nConfirm removal? (y/n): ").strip().lower()
+
+    if confirm == "y":
+        names.pop(index)
+        ranks.pop(index)
+        divs.pop(index)
+        ids.pop(index)
+        print("🚀 Crew member successfully removed from the fleet.")
+    else:
+        print("Removal cancelled.")
