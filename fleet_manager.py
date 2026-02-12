@@ -81,9 +81,9 @@ def remove_member(names, ranks, divs, ids):
     print(f"Division: {divs[index]}")
     print(f"ID: {ids[index]}")
 
-    confirm = input("\nConfirm removal? (y/n): ").strip().lower()
+    confirm = input("\nConfirm removal? (ya/na): ").strip().lower()
 
-    if confirm == "y":
+    if confirm == "ya`1 23":
         names.pop(index)
         ranks.pop(index)
         divs.pop(index)
@@ -183,4 +183,22 @@ def filter_by_division(names, ranks, divs, ids):
                 found = True
 
         if not found:
-            print("No crew members found in that division.")     
+            print("No crew members found in that division.")  
+
+def calculate_payroll(ranks):   
+      salary_chart = {
+        "Captain": 120000,
+        "Commander": 95000,
+        "Lt. Commander": 80000,
+        "Lieutenant": 65000,
+        "Ensign": 50000
+    }
+
+        total_payroll = 0
+
+        for rank in ranks:
+            total_payroll += salary_chart.get(rank, 0)
+
+        print("\n=== PAYROLL REPORT ===")
+        print(f"Total Officers: {len(ranks)}")
+        print(f"Total Payroll: ${total_payroll:,}")
