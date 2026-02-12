@@ -169,3 +169,18 @@ def search_crew(names, ranks, divs, ids):
 
         if not found:
             print("No matching crew member found.")
+
+def filter_by_division(names, ranks, divs, ids):
+        division_query = input("Enter division to filter: ").strip().lower()
+
+        print(f"\n=== Crew in {division_query.title()} Division ===")
+
+        found = False
+
+        for i in range(len(divs)):
+            if divs[i].lower() == division_query:
+                print(f"{ids[i]} - {names[i]} ({ranks[i]})")
+                found = True
+
+        if not found:
+            print("No crew members found in that division.")     
