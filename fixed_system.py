@@ -13,7 +13,7 @@ def run_system_monolith():
     loading = 0
     while loading < 5:
         print("Loading module " + str(loading))
-        loading += 1
+        loading += 1 #Without this the loop will never reach a reason to stop
     
     while True:
         print("\n--- MENU ---")
@@ -27,7 +27,7 @@ def run_system_monolith():
         
         if opt == "1":  
             print("Current Crew List:")
-            for i in range(len(n)):
+            for i in range(len(n)): #numbers can cause bugs so using len allows for dynamic limits
                 print(n[i] + " - " + r[i] + " - " + d[i]) 
                 
         elif opt == "2":
@@ -38,13 +38,13 @@ def run_system_monolith():
             n.append(new_name)
             r.append(new_rank)
             d.append(new_div)
-            
+            # If the length changes it automatically will crash, important to keep the same length.
             print("Crew member added.")
             
         elif opt == "3":
             rem = input("Name to remove: ")
            
-            if rem in n:
+            if rem in n: #Validation gives the code the ability to confirm a change instead of crashing.
                 idx = n.index(rem)
                 n.pop(idx)
                 r.pop(idx)
@@ -56,7 +56,7 @@ def run_system_monolith():
             count = 0
             
             for rank in r:
-                if rank == "Captain" or rank == "Commander": 
+                if rank == "Captain" or rank == "Commander": #Python can not automatically repeat a comparison so we must do it ourselves
                     count +=1
             print("High ranking officers: ", count) 
             
@@ -90,4 +90,4 @@ def run_system_monolith():
             
         print("\nEnd of cycle.")
 
-run_system_monolith()
+run_system_monolith() #Parenthesis allows the code to actually be ran
