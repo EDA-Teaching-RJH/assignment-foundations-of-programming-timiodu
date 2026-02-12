@@ -43,21 +43,21 @@ def add_member(names, ranks, divs, ids):
             print("-", r)
         return
 
-        division = input("Enter division (Command/Operations/Security/Sciences): ").strip()
+    division = input("Enter division (Command/Operations/Security/Sciences): ").strip()
 
-        try:
+    try:
             new_id = int(input("Enter unique ID number: "))
-        except ValueError:
+    except ValueError:
             print("ID must be a number.")
-        return
+    return
 
-        if new_id in ids:
+    if new_id in ids:
             print("Error: ID already exists.")
-        return
-        names.append(name)
-        ranks.append(rank)
-        divs.append(division)
-        ids.append(new_id)
+    return
+    names.append(name)
+    ranks.append(rank)
+    divs.append(division)
+    ids.append(new_id)
 
         print("Crew member successfully added.")#
 
@@ -91,4 +91,51 @@ def remove_member(names, ranks, divs, ids):
         print("🚀 Crew member successfully removed from the fleet.")
     else:
         print("Removal cancelled.")#
+def update_rank(names, ranks, divs, ids):
+    
+    print("\n=== RANK MODIFICATION TERMINAL ===")
+
+    try:
+            crew_id = int(input("Enter Crew ID: "))
+    except ValueError:
+            print("Invalid ID. Must be numeric.")
+    return
+
+    if crew_id not in ids:
+            print("Crew ID not found in system.")
+    return
+
+index = ids.index(crew_id)
+
+print("\nCrew Member Located:")
+print(f"Name: {names[index]}")
+print(f"Current Rank: {ranks[index]}")
+print(f"Division: {divs[index]}")
+
+valid_ranks = [
+        "Captain",
+        "Commander",
+        "Lt. Commander",
+        "Lieutenant",
+        "Ensign"
+    ]
+
+print("\nAvailable Ranks:")
+for r in valid_ranks:
+        print("-", r)
+
+new_rank = input("\nEnter new rank: ").strip()
+
+if new_rank not in valid_ranks:
+        print("Invalid rank selection.")
+    
+        return
+
+confirm = input(f"Confirm promotion/demotion to {new_rank}? (y/n): ").strip().lower()
+
+if confirm == "y":
+        ranks[index] = new_rank
+        print("🟢 Rank successfully updated.")
+else:
+        print("Update cancelled.") 
 
