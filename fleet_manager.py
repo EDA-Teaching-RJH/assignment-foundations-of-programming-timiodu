@@ -152,3 +152,20 @@ for i in range(len(names)):
         print("{:<6} {:<15} {:<15} {:<15}".format(
             ids[i], names[i], ranks[i], divs[i]
         ))
+
+def search_crew(names, ranks, divs, ids):
+        query = input("Enter name to search: ").strip().lower()
+
+        found = False
+
+        for i in range(len(names)):
+            if query in names[i].lower():
+                print("\nCrew Member Found:")
+                print(f"ID: {ids[i]}")
+                print(f"Name: {names[i]}")
+                print(f"Rank: {ranks[i]}")
+                print(f"Division: {divs[i]}")
+                found = True
+
+        if not found:
+            print("No matching crew member found.")
